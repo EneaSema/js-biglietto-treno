@@ -14,23 +14,31 @@ console.log(responseDistance);
 
 // creato costante fissa per costo al Km
 const pricekm = 0.21;
+
+// calcolo costo al Km
 const pricetotkm = pricekm * responseDistance;
 console.log(pricetotkm.toFixed(2));
+
+// presenza biglietto
+const ticket = true;
+const student = true;
 
 let discountprice;
 
 // SVOLGIMENTO
 
-if (responseAge < 18) {
-  console.log("Passaggero minorenne");
-  discountprice =
-    pricekm * responseDistance - (pricekm * responseDistance * 20) / 100;
-  console.log("Il costo del biglietto è ", discountprice.toFixed(2));
-} else if (responseAge > 65) {
-  console.log("Passaggero over65");
-  discountprice =
-    pricekm * responseDistance - (pricekm * responseDistance * 40) / 100;
-  console.log("Il costo del biglietto è ", discountprice.toFixed(2));
+if (responseAge < 10) {
+  alert("Passaggero età non consentita per viaggiare da solo");
+}
+if (
+  responseAge > 10 &&
+  (responseAge >= 14 || responseAge <= 25) &&
+  ticket == true &&
+  student == true
+) {
+  console.log("Utente studente con biglietto che può viaggiare");
+  discountprice = pricetotkm - (pricetotkm * 35) / 100;
+  console.log("il prezzo biglietto per studente è:", discountprice);
 }
 
 // OUTPUT
